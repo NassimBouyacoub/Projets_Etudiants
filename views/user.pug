@@ -1,0 +1,26 @@
+extends layout
+block content
+    .identite
+        img.photo-id(src='/images/photo-id.jpg' alt='')
+        .infos
+            h2
+                b  
+                |   #{Nom} #{Prenom}
+            p
+                b Sp&eacute;cialit&eacute;:
+                |  #{Specialite}
+            p
+                b Email:
+                |  #{Email}
+            p
+                b T&eacute;lephone:
+                |  #{Telephone}
+    h2 - Projet en Cours
+    h3 
+        ul
+            each nom in NomProjet
+                li= nom
+    h2 - Materiel pr&eacute;t&eacute;
+    ul
+        each mat in Materiel
+            li= mat

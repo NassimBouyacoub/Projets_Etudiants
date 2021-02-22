@@ -1,0 +1,41 @@
+extends layout 
+block content 
+    
+    .container-fluid.col-6
+                .text-center
+                    img.col-7(src="/images/logo.png", alt="")
+                br
+                h2 Inscription
+                form(action="/register" method="POST")
+                    label.form-label.container-fluid Nom
+                        input.form-control(type='text' name='Nom' placeholder='Nom' required)
+                    br
+                    label.form-label.container-fluid Prénom
+                        input.form-control(type='text' name='Prenom' placeholder='Prenom' required)
+                    br
+                    label.form-label.container-fluid E-mail
+                        input.form-control(type='text' name='Email' placeholder='Email' required)
+                    br
+                    label.form-label.container-fluid Specialité
+                        .form-check.col
+                                input#flexRadioDefault1.form-check-input(type='radio' name='Specialite' value="ISHM")
+                                label.form-check-label(for='Specialite1')
+                                    | ISHM
+                        .form-check.col
+                                input#flexRadioDefault2.form-check-input(type='radio' name='Specialite' value="MTI")
+                                label.form-check-label(for='Specialite2')
+                                    | MTI
+                        .form-check.col
+                                input#flexRadioDefault3.form-check-input(type='radio' name='Specialite' checked='' value="IMEEN")
+                                label.form-check-label(for='Specialite2')
+                                    | IMEEN
+                    br
+                    label.form-label.container-fluid Mot de passe
+                        input.form-control(type='password' name='password' placeholder='Mot de passe' required)
+                    br
+                    label.form-label.container-fluid Confirmation du mot de passe
+                        input.form-control(type='password' name='passwordconf' placeholder='Retapez votre mot de passe' required)
+                    br
+                    br
+                    .text-center
+                            button.btn.btn-success.col-4(type='submit') S'inscrire

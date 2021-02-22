@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    title Projets Etudiants
+    
+    link(rel="stylesheet", href='/stylesheets/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="javascript", href='/javascripts/bootstrap.js')
+    link(rel='icon' type='image/png' href='/images/icon.png')
+  body
+    nav.container-fluid
+      img(src="/images/UL_LOGO_BLANC_RVB.png")
+      h1 &nbsp Projets Etudiants
+      ul
+        li
+          a#link(href='/accueil') Accueil
+        li
+          a#link(href='/user')  Profil
+      a#off(href="/") 
+        img(src='/images/icon-disconnect.png') 
+        
+  .content 
+    block content
+  footer
+    img(src='/images/UL_LOGO_BLANC_RVB.png' alt='logo-bw')
+    p
+      | 34 cours L&eacute;opold CS 25233 54052 Nancy cedex - France
+      | T&eacute;l. +33(0)3 72 74 00 00
