@@ -3,6 +3,8 @@ block content
     
     .container-fluid.col-6
                 .text-center
+                    if message 
+                        .alert.alert-danger #{message}
                     img.col-7(src="/images/logo.png", alt="")
                 br
                 h2 Inscription
@@ -13,12 +15,22 @@ block content
                     label.form-label.container-fluid Prénom
                         input.form-control(type='text' name='Prenom' placeholder='Prenom' required)
                     br
+                    label.form-label.container-fluid Fonction
+                        .form-check.col
+                                input#flexRadioDefault1.form-check-input(type='radio' name='Fonction' value="Etudiant" checked)
+                                label.form-check-label(for='Fonction1')
+                                    | Etudiant
+                        .form-check.col
+                                input#flexRadioDefault2.form-check-input(type='radio' name='Fonction' value="Enseignant")
+                                label.form-check-label(for='Fonction2')
+                                    | Enseignant
+                    br
                     label.form-label.container-fluid E-mail
                         input.form-control(type='text' name='Email' placeholder='Email' required)
                     br
                     label.form-label.container-fluid Specialité
                         .form-check.col
-                                input#flexRadioDefault1.form-check-input(type='radio' name='Specialite' value="ISHM")
+                                input#flexRadioDefault1.form-check-input(type='radio' name='Specialite' value="ISHM" checked )
                                 label.form-check-label(for='Specialite1')
                                     | ISHM
                         .form-check.col
@@ -26,16 +38,22 @@ block content
                                 label.form-check-label(for='Specialite2')
                                     | MTI
                         .form-check.col
-                                input#flexRadioDefault3.form-check-input(type='radio' name='Specialite' checked='' value="IMEEN")
+                                input#flexRadioDefault3.form-check-input(type='radio' name='Specialite'  value="IMEEN")
                                 label.form-check-label(for='Specialite2')
                                     | IMEEN
+                        .form-check.col
+                                input#flexRadioDefault3.form-check-input(type='radio' name='Specialite'  value="")
+                                label.form-check-label(for='Specialite2')
+                                    | Enseignant
                     br
                     label.form-label.container-fluid Mot de passe
-                        input.form-control(type='password' name='password' placeholder='Mot de passe' required)
+                        input.form-control.pass(type='password' pattern=".{8,}" title="Minimum 8 caractéres" name='password' placeholder='Mot de passe' required)
                     br
                     label.form-label.container-fluid Confirmation du mot de passe
-                        input.form-control(type='password' name='passwordconf' placeholder='Retapez votre mot de passe' required)
+                        input.form-control.passconf(type='password' pattern=".{8,}" title="Minimum 8 caractéres" name='passwordconf' placeholder='Retapez votre mot de passe' required)
                     br
                     br
                     .text-center
                             button.btn.btn-success.col-4(type='submit') S'inscrire
+
+                    

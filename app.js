@@ -4,10 +4,10 @@ var path = require('path');
 const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const mongoose = require('mongoose');
 const connectDB = require('./BD/Connexion');
 var indexRouter = require('./routes/index');
 var app = express();
+
 
 
 // view engine setup

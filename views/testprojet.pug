@@ -1,0 +1,24 @@
+extends layout 
+block content 
+    .container-fluid.col-6
+                .text-center
+                    img.col-7(src="/images/logo.png", alt="")
+                br
+                h2 Inscription
+                form(action="/testprojet" method="POST")
+                    label.form-label.container-fluid Nom
+                        input.form-control(type='text' name='nom' placeholder='Nom' required)
+                    br
+                    label.form-label.container-fluid Nombre d'étudiants maximal
+                        input.form-control(type='number' name='nombreEtudiant' placeholder='Prenom' required)
+                    br
+                    label.form-label.container-fluid Encadrant
+                        input.form-control(type='string' name='Encadrant' placeholder='Prenom' required)
+                    br
+                    label.form-label.container-fluid Matériel requis
+                        input.form-control(type='String' name='Materiel' placeholder='Prenom' required)
+                
+                    .text-center
+                            button.btn.btn-success.col-4(type='submit') S'inscrire
+
+                    

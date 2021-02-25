@@ -3,24 +3,22 @@ block content
     .identite
         img.photo-id(src='/images/photo-id.jpg' alt='')
         .infos
+            
             h2
                 b  
-                |   #{Nom} #{Prenom}
+                | #{user.Nom} #{user.Prenom}
+            p
+                b Fonction:
+                |  #{user.Fonction}
+            
             p
                 b Sp&eacute;cialit&eacute;:
-                |  #{Specialite}
+                |  #{user.Specialite}
             p
                 b Email:
-                |  #{Email}
-            p
-                b T&eacute;lephone:
-                |  #{Telephone}
+                |  #{user.Email}
+            
     h2 - Projet en Cours
     h3 
-        ul
-            each nom in NomProjet
-                li= nom
+
     h2 - Materiel pr&eacute;t&eacute;
-    ul
-        each mat in Materiel
-            li= mat
