@@ -1,6 +1,8 @@
 
-const bcrypt = require("bcryptjs"),
-register =(req,res,next)=>{
+const bcrypt = require("bcryptjs")
+const user 				= require("../BD/User")
+
+const register =(req,res,next)=>{
         user.findOne({ Email: req.body.Email }, function(err, users) {
             if(users){
                 res.render('register', {message: "Cet utilisateur existe deja"})
@@ -22,7 +24,7 @@ register =(req,res,next)=>{
                         Utilisateur.save()
                         .then(user=>{
                             console.log("Utilisateur crée avec succés, Connectez-vous")
-                            res.render('login',{bien:'utilisateur crée avec succés'})
+                            res.redirect('login',{bien:'Utilisateur crée avec succés'})
                         })
                         .catch(error=>{
                             console.log("Probléme lors de la création de l'utilisateur")
@@ -37,26 +39,4 @@ register =(req,res,next)=>{
 
         
 
-const login = (req,res,next)=>{
-    var email = req.body.Email
-    var password = req.body.password
-    user.findOne({Email:email})
-    .then(user=>{
-        if(user){
-            bcrypt.compare(password,user.motdePasse,function(err,result){               
-                if(result){
-                    console.log("Connexion réussie")
-                    res.render('user',{user})
-                }
-                else{
-                    console.log("Mot de passe incorect")
-                    res.render('login',{message:"mot de passe incorrect"})
-                }
-            })
-        }
-        else{
-            res.render('login',{message:"cet utilisateur n'existe pas"})
-        }
-    })
-}
-  module.exports = {register,login}
+  module.exports = {register}
