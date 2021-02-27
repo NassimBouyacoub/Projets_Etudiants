@@ -17,7 +17,7 @@ router.get('/login', passeport.isLoggedOut, (req, res) => {
 });
 
 router.post('/login', passport.authenticate('local', {
-	successRedirect: '/',
+	successRedirect: '/index',
 	failureRedirect: '/login?error=true'
 }));
 
@@ -36,6 +36,16 @@ router.get('/profil',passeport.isLoggedIn, function(req, res, next) {
   res.render('user')
 });
 router.get('/index',passeport.isLoggedIn, function(req, res, next) {
-  res.render('index')
+	console.log(passport.user.Nom)
+	pro.find({},function(err,projet){
+		if (projet){
+			console.log(projet)
+			res.render('index',{projet})
+		}
+		if (err){
+			console.log(err)
+		}
+	})
+	
 });
 module.exports = router;
