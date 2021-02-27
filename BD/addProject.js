@@ -1,8 +1,8 @@
-var project = require("../BD/Projet")
+var project = require("../BD/projet")
 const addProject=(req,res,next)=>{
     let projet = new project({
         Nom:req.body.nom,
-        NombreEtudiant:req.body.nombreEtudiant,
+        nombreEtudiants:req.body.nombreEtudiants,
         Encadrant:req.body.Encadrant,
         materielRequis:req.body.Materiel,
     })

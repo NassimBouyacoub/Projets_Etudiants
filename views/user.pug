@@ -6,19 +6,26 @@ block content
             
             h2
                 b  
-                | #{Nom} #{Prenom}
+                | #{Utilisateur.Nom} #{Utilisateur.Prenom}
             p
                 b Fonction:
-                |  #{Fonction}
+                |  #{Utilisateur.Fonction}
             
             p
                 b Sp&eacute;cialit&eacute;:
-                |  #{Specialite}
+                |  #{Utilisateur.Specialite}
             p
                 b Email:
-                |  #{Email}
-            
-    h2 - Projet en Cours
-    h3 
+                |  #{Utilisateur.Email}
+    br
+    br
+    if Utilisateur.Fonction == "Etudiant"        
+        h2 - Projet en Cours
+        h3 
 
-    h2 - Materiel pr&eacute;t&eacute;
+        h2 - Materiel pr&eacute;t&eacute;
+        
+    if Utilisateur.Fonction == "Enseignant"
+            a(href="/addprojet")
+                button.btn.btn-success.col-4(type='submit') Ajouter un projet
+

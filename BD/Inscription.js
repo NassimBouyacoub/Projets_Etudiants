@@ -23,8 +23,8 @@ const register =(req,res,next)=>{
                         })
                         Utilisateur.save()
                         .then(user=>{
-                            console.log("Utilisateur crée avec succés, Connectez-vous")
-                            res.redirect('login',{bien:'Utilisateur crée avec succés'})
+                            console.log("Utilisateur crée avec succes")
+                            res.render('login',{bien: "Utilisateur crée avec succes"})
                         })
                         .catch(error=>{
                             console.log("Probléme lors de la création de l'utilisateur")

@@ -1,10 +1,8 @@
 extends layout
 block content
     h2 Liste des projets Disponible
-    ul  
-       
-
-        
+    br
+    ul
             table.table
                 thead.thead-dark
                     tr
@@ -12,6 +10,8 @@ block content
                     th(scope='col') Nom du projet
                     th(scope='col') Nom de l'encadrant
                     th(scope='col') Nombre d'étudiants max
+                    th(scope='col') Disponibilité
+
                 
                         -var index=1
                         each pro in projet 
@@ -21,3 +21,5 @@ block content
                                         td=pro.Nom
                                         td=pro.Encadrant
                                         td=pro.nombreEtudiants
+                                        td  
+                                            a(href="/") Choisir  
