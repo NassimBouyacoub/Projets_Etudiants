@@ -5,7 +5,7 @@ const addProject=(req,res,next)=>{
         nombreEtudiants:req.body.nombreEtudiants,
         Encadrant:req.user.Nom,
         Dispo:true,
-        PrisPar:"Peronne"
+        PrisPar:"Libre"
     })
     projet.save()
     .then(user=>{

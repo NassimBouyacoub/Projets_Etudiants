@@ -43,7 +43,7 @@ router.post("/register",function(req,res,next){
 
 
 //Ajouter un projet
-router.get('/addprojet', function(req, res, next) {
+router.get('/addprojet',passeport.isLoggedIn, function(req, res, next) {
 	res.render('testprojet')
   });
 router.post("/addprojet",function(req,res,next){

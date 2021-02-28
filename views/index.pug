@@ -2,38 +2,31 @@ extends layout
 block content
     h2 Liste des projets Disponible
     br
-    ul
-            table.table
-                thead.thead-dark
-                    tr
-                    th(scope='col') Numéro
-                    th(scope='col') Nom du projet
-                    th(scope='col') Nom de l'encadrant
-                    th(scope='col') Nombre d'étudiants max
-                    th(scope='col') Choix
-                    each pro in projet
-                        -if (pro.Dispo){    
-                            form(action="/index" method="POST")
-                                -var index=1
-                                each pro in projet
-                                    -if (pro.Dispo.length){
-                                            tbody
-                                                tr1
-                                                    
-                                                    th(scope='row')=index++
-                                                    td=pro.Nom
-                                                    td=pro.Encadrant
-                                                    td=pro.nombreEtudiants
-                                                    td  
-                                                        .form-check.col
-                                                            input#flexRadioDefault2.form-check-input(type='radio' name='projet' value=pro.Nom) 
-                                                    button.btn.btn-success(type="submit") Choisir                         
-                                            
-                                    -}
-                        -}
-                        -else{
-                            tbody
-                                tr1
-                                   td  Pas de projet disponible pour l'instant
-                        -}                                                
+    form(action="/index" method="POST")
+        table.table
+            thead.thead-dark
+                tr
+                th(scope='col') Numéro
+                th(scope='col') Nom du projet
+                th(scope='col') Nom de l'encadrant
+                th(scope='col') Nombre d'étudiants max
+                th(scope='col') Choix
+                            -var index=1
+                            each pro in projet
+                                -if (pro.Dispo){
+                                    tbody
+                                        tr1    
+                                            th(scope='row')=index++
+                                            td=pro.Nom
+                                            td=pro.Encadrant
+                                            td=pro.nombreEtudiants
+                                            td  
+                                                .form-check.col
+                                                    input#flexRadioDefault2.form-check-input(type='radio' name='projet' value=pro.Nom)
+                                -}
+        button.btn.btn-success(type="submit") Choisir
+                                   
+                                                                                              
+                    
+                                                                      
             
