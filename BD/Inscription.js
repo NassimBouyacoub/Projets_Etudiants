@@ -19,16 +19,14 @@ const register =(req,res,next)=>{
                             Prenom:req.body.Prenom,
                             Email:req.body.Email,
                             Specialite:req.body.Specialite,
+                            Projet:"Vide",
                             motdePasse:hashedPass,
                         })
                         Utilisateur.save()
-                        .then(user=>{
-                            console.log("Utilisateur crée avec succes")
-                            res.render('login',{bien: "Utilisateur crée avec succes"})
-                        })
-                        .catch(error=>{
-                            console.log("Probléme lors de la création de l'utilisateur")
-                        })
+                        console.log("Utilisateur crée avec succes")
+                        res.render('login',{bien: "Utilisateur crée avec succes"})
+
+
                     })
                     }
                     else{

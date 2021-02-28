@@ -10,16 +10,30 @@ block content
                     th(scope='col') Nom du projet
                     th(scope='col') Nom de l'encadrant
                     th(scope='col') Nombre d'étudiants max
-                    th(scope='col') Disponibilité
-
-                
-                        -var index=1
-                        each pro in projet 
-                                tbody
-                                    tr1
-                                        th(scope='row')=index++
-                                        td=pro.Nom
-                                        td=pro.Encadrant
-                                        td=pro.nombreEtudiants
-                                        td  
-                                            a(href="/") Choisir  
+                    th(scope='col') Choix
+                    each pro in projet
+                        -if (pro.Dispo){    
+                            form(action="/index" method="POST")
+                                -var index=1
+                                each pro in projet
+                                    -if (pro.Dispo.length){
+                                            tbody
+                                                tr1
+                                                    
+                                                    th(scope='row')=index++
+                                                    td=pro.Nom
+                                                    td=pro.Encadrant
+                                                    td=pro.nombreEtudiants
+                                                    td  
+                                                        .form-check.col
+                                                            input#flexRadioDefault2.form-check-input(type='radio' name='projet' value=pro.Nom) 
+                                                    button.btn.btn-success(type="submit") Choisir                         
+                                            
+                                    -}
+                        -}
+                        -else{
+                            tbody
+                                tr1
+                                   td  Pas de projet disponible pour l'instant
+                        -}                                                
+            

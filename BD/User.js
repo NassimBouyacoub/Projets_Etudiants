@@ -15,6 +15,9 @@ const user = new mongoose.Schema({
   Specialite:{
     type:String
   },
+  Projet:{
+    type:String
+  },
   motdePasse:{
     type:String
   },

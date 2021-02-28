@@ -3,8 +3,9 @@ const addProject=(req,res,next)=>{
     let projet = new project({
         Nom:req.body.nom,
         nombreEtudiants:req.body.nombreEtudiants,
-        Encadrant:req.body.Encadrant,
-        materielRequis:req.body.Materiel,
+        Encadrant:req.user.Nom,
+        Dispo:true,
+        PrisPar:"Peronne"
     })
     projet.save()
     .then(user=>{

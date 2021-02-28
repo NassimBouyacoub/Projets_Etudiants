@@ -5,7 +5,10 @@ var router = express.Router();
 const passeport = require("../BD/passport")
 const reg = require("../BD/Inscription")
 const pro = require('../BD/projet');
+const you = require('../BD/User')
 const proj = require('../BD/addProject')
+const choix =require('../BD/choix');
+const { findOne } = require('../BD/User');
 
 
 
@@ -53,11 +56,20 @@ router.post("/addprojet",function(req,res,next){
 
 
 router.get('/profil',passeport.isLoggedIn, function(req, res, next) {
-	Utilisateur = req.user
-	console.log(Utilisateur)
-	res.render('user',[Utilisateur])
-  
+	pro.find({Encadrant:req.user.Nom},function(err,proj){
+		if(proj){
+		Utilisateur = req.user
+		res.render('user',{data: {Utilisateur:[Utilisateur],proj:proj}})
+		}
+		if(err){
+			console.log('project not found')
+		}
+	})
 });
+
+
+
+
 router.get('/index',passeport.isLoggedIn, function(req, res, next) {
 	pro.find({},function(err,projet){
 		if (projet){
@@ -70,4 +82,10 @@ router.get('/index',passeport.isLoggedIn, function(req, res, next) {
 	})
 	
 });
+
+router.post("/index",function(req,res,next){
+	choix.choix(req,res)
+	res.redirect('/profil')
+  });
+
 module.exports = router;

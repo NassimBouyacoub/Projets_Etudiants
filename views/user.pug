@@ -8,12 +8,12 @@ block content
                 b  
                 | #{Utilisateur.Nom} #{Utilisateur.Prenom}
             p
-                b Fonction:
+                b 
                 |  #{Utilisateur.Fonction}
-            
-            p
-                b Sp&eacute;cialit&eacute;:
-                |  #{Utilisateur.Specialite}
+            if Utilisateur.Fonction == "Etudiant" 
+                p
+                    b Sp&eacute;cialit&eacute;:
+                    |  #{Utilisateur.Specialite}
             p
                 b Email:
                 |  #{Utilisateur.Email}
@@ -21,11 +21,22 @@ block content
     br
     if Utilisateur.Fonction == "Etudiant"        
         h2 - Projet en Cours
-        h3 
+            br
+            ul
+                li &nbsp #{Utilisateur.Projet}
 
-        h2 - Materiel pr&eacute;t&eacute;
         
     if Utilisateur.Fonction == "Enseignant"
+            h2 - Projet en Cours
+            br
+            ul
+                -if(data.proj.length>0){    
+                    each pro in data.proj
+                        li &nbsp #{pro.Nom} (#{pro.PrisPar})
+                -}
+                -else if(data.proj.length==0){ 
+                    | Aucun Projet Proposé
+                -}
             a(href="/addprojet")
-                button.btn.btn-success.col-4(type='submit') Ajouter un projet
+                button.btn.btn-success.col-4(type='submit') Proposer un projet
 

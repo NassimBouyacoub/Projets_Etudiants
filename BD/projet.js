@@ -9,9 +9,12 @@ const project = new mongoose.Schema({
   Encadrant:{
       type:String
   },
-  materielRequis:{
-    type:String
+  Dispo:{
+    type:Boolean
   },
+  PrisPar:{
+    type:String
+  }
 
 });
 const projet = mongoose.model('projet',project);
