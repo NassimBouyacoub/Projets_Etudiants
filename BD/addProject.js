@@ -4,6 +4,7 @@ const addProject=(req,res,next)=>{
         Nom:req.body.nom,
         nombreEtudiants:req.body.nombreEtudiants,
         Encadrant:req.user.Nom,
+        dateLimite:req.body.dateLimite,
         Dispo:true,
         PrisPar:"Libre"
     })

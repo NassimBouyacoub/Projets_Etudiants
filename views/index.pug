@@ -10,9 +10,10 @@ block content
                 th(scope='col') Nom du projet
                 th(scope='col') Nom de l'encadrant
                 th(scope='col') Nombre d'étudiants max
+                th(scope='col') Date Limite
                 th(scope='col') Choix
                             -var index=1
-                            each pro in projet
+                            each pro in data.projet
                                 -if (pro.Dispo){
                                     tbody
                                         tr1    
@@ -20,6 +21,11 @@ block content
                                             td=pro.Nom
                                             td=pro.Encadrant
                                             td=pro.nombreEtudiants
+                                            td= pro.dateLimite.getDate() 
+                                                | 
+                                                =data.Mois[pro.dateLimite.getMonth()]
+                                                | 
+                                                =pro.dateLimite.getFullYear()
                                             td  
                                                 .form-check.col
                                                     input#flexRadioDefault2.form-check-input(type='radio' name='projet' value=pro.Nom)

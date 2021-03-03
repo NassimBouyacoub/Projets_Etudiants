@@ -14,6 +14,9 @@ const project = new mongoose.Schema({
   },
   PrisPar:{
     type:String
+  },
+  dateLimite:{
+    type:Date
   }
 
 });

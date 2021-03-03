@@ -73,8 +73,9 @@ router.get('/profil',passeport.isLoggedIn, function(req, res, next) {
 router.get('/index',passeport.isLoggedIn, function(req, res, next) {
 	pro.find({},function(err,projet){
 		if (projet){
+			var mois=['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Décembre']
 			console.log(projet)
-			res.render('index',{projet})
+			res.render('index',{data:{projet:projet,Mois:mois}})
 		}
 		if (err){
 			console.log(err)
