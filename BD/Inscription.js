@@ -20,6 +20,7 @@ const register =(req,res,next)=>{
                             Email:req.body.Email,
                             Specialite:req.body.Specialite,
                             Projet:"Vide",
+                            materielPret:["Vide"],
                             motdePasse:hashedPass,
                         })
                         Utilisateur.save()

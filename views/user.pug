@@ -20,23 +20,58 @@ block content
     br
     br
     if Utilisateur.Fonction == "Etudiant"        
-        h2 - Projet en Cours
+            h2 - Projet en Cours
+            -if(Utilisateur.Projet=="Vide"){
+                ul
+                    li
+                        |  Pas de Projet pour l'instant 
+                -}
+            h2 - Materiel prété
+            -if (Utilisateur.materielPret){
+                - var index=0
+                ul
+                    each materiel in Utilisateur.materielPret 
+                        li=materiel
+            -}
             br
-            ul
-                li &nbsp #{Utilisateur.Projet}
-
+            a(href="/pret")
+                    button.btn.btn-success.col-4(type='submit') Preter du materiel
         
     if Utilisateur.Fonction == "Enseignant"
-            h2 - Projet en Cours
-            br
-            ul
-                -if(data.proj.length>0){    
-                    each pro in data.proj
-                        li &nbsp #{pro.Nom} (#{pro.PrisPar})
-                -}
-                -else if(data.proj.length==0){ 
-                    | Aucun Projet Proposé
-                -}
-            a(href="/addprojet")
-                button.btn.btn-success.col-4(type='submit') Proposer un projet
+                    h2 - Demandes d'encadrement
+                    br
+                    ul  
+                    -if(data.proj.length>0){
+                        table.table
+                            thead.thead-dark
+                                tr
+                                th(scope='col') Numéro
+                                th(scope='col') Etudiant
+                                th(scope='col') Nom du projet
+                                th(scope='col') Réponse
+                                            
+                                            each pro,i in data.proj
+                                                each y,j in pro.listeEtudiant
+                                                    tbody
+                                                            tr1  
+                                                                th(scope='row')=j+1
+                                                                td=pro.listeEtudiant[j]
+                                                                td=pro.Nom
+                                                                td
+                                                                    button.btn.btn-success Accepter
+                                                                    | 
+                                                                    button.btn.btn-danger Refuser
+                    -}
+                    h2 - Projet en Cours
+                    br
+                    ul
+                        -if(data.proj.length>0){    
+                            each pro in data.proj
+                                li &nbsp #{pro.Nom} (#{pro.PrisPar})
+                        -}
+                        -else if(data.proj.length==0){ 
+                            | Aucun Projet Proposé
+                        -}
+                    a(href="/addprojet")
+                            button.btn.btn-success.col-4(type='submit') Proposer un projet
 

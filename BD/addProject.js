@@ -6,7 +6,8 @@ const addProject=(req,res,next)=>{
         Encadrant:req.user.Nom,
         dateLimite:req.body.dateLimite,
         Dispo:true,
-        PrisPar:"Libre"
+        PrisPar:"Libre",
+        listeEtudiant:[]
     })
     projet.save()
     .then(user=>{

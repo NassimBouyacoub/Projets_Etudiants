@@ -6,9 +6,10 @@ const passeport = require("../BD/passport")
 const reg = require("../BD/Inscription")
 const pro = require('../BD/projet');
 const you = require('../BD/User')
+
+const addMateriele = require('../BD/addMateriel')
 const proj = require('../BD/addProject')
 const choix =require('../BD/choix');
-const { findOne } = require('../BD/User');
 
 
 
@@ -44,14 +45,21 @@ router.post("/register",function(req,res,next){
 
 //Ajouter un projet
 router.get('/addprojet',passeport.isLoggedIn, function(req, res, next) {
-	res.render('testprojet')
+	var Materiel=['Arduino','Raspberry','Discovery Analog']
+	res.render('testprojet',{data:{materiel:Materiel}})
   });
 router.post("/addprojet",function(req,res,next){
-	proj.addProject(req,res)
 	res.redirect('index')
+});
+
+// Pret materiel
+router.get('/pret',passeport.isLoggedIn, function(req, res, next) {
+	res.render('pretMateriel')
   });
-
-
+router.post('/pret',passeport.isLoggedIn, function(req, res, next) {
+	addMateriele.addMateriel(req,res)
+	res.render('pretMateriel',{message:'Le materiel que vous avez choisi a été ajouté a votre liste de pret'})
+  });
 
 
 
@@ -88,5 +96,8 @@ router.post("/index",function(req,res,next){
 	choix.choix(req,res)
 	res.redirect('/profil')
   });
-
+router.post("/nouveauProjet",passeport.isLoggedIn,function(req,res,next){
+	proj.addProject(req,res)
+	res.render('testprojet',{message:"Projet ajouté avec succes"})
+});
 module.exports = router;

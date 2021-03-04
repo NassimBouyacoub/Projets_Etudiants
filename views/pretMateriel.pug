@@ -1,0 +1,51 @@
+extends layout 
+block content 
+    script.
+
+                var expanded = false;
+                function showCheckboxes() {
+                var checkboxes = document.getElementById("checkboxes");
+                if (!expanded) {
+                    checkboxes.style.display = "block";
+                    expanded = true;
+                } else {
+                    checkboxes.style.display = "none";
+                    expanded = false;
+                }}
+    .container-fluid
+        if message
+            .text-center.alert.alert-success #{message}
+        .container-fluid.text-center.col-6
+            img.col-7(src="/images/logo.png", alt="")
+        br
+        h2 Pret de materiel
+        .row
+                    form(action="/pret" method="POST")
+                
+                        .col 
+                            label Choisissez le materiel
+                            .m-1
+                            .multiselect
+                                .selectBox(onclick='showCheckboxes()')
+                                    select
+                                        option Materiel
+                                    .overSelect
+                                #checkboxes
+                                    label(for='one')
+                                    input#one(type='checkbox' name="materiel" value="Arduino")
+                                    | Arduino
+                                    label(for='two')
+                                    input#two(type='checkbox' name="materiel" value="RaspberryPi")
+                                    | RaspberryPi
+                                    label(for='three')
+                                    input#three(type='checkbox')
+                                    | Discovery Analog
+                        .mb-4
+                        .col 
+                            alert.alert-warning ATTENTION: La durée du pret est de 6 Mois maximum
+                        .mb-4
+                        .col
+                            button.btn.btn-success(type="submit") Preter le Materiel
+        br
+        a(href="index") 
+                            button.btn.btn-success(type='submit') Revenir a la liste des projets

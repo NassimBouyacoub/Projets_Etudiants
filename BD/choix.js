@@ -1,15 +1,9 @@
 var project = require("../BD/projet")
-const user 				= require("../BD/User")
 
 const choix=(req,res,next)=>{
-    project.findOne({Nom:req.body.projet}, function (err, pro) {
+    project.findOneAndUpdate({Nom:req.body.projet},{$push:{listeEtudiant:req.user.Email}}, function (err, pro) {
         if(pro){
-            pro.Dispo=false
-            pro.PrisPar=req.user.Email
-            pro.save()
-            console.log("projet trouvé")
-            req.user.Projet=pro.Nom
-            req.user.save()
+            console.log("Etudiant ajouté")
         }
         else{
             console.log("erreur")

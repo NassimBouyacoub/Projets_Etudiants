@@ -17,6 +17,9 @@ const project = new mongoose.Schema({
   },
   dateLimite:{
     type:Date
+  },
+  listeEtudiant:{
+    type:[String]
   }
 
 });

@@ -1,18 +1,27 @@
 extends layout 
-block content 
-    .container-fluid.col-6
-                .text-center
-                    img.col-7(src="/images/logo.png", alt="")
-                br
-                h2 Inscription
-                form(action="/addprojet" method="POST")
-                    label.form-label.container-fluid Nom du projet
-                        input.form-control(type='text' name='nom' placeholder='Nom' required)
-                    br
-                    label.form-label.container-fluid Nombre d'étudiants maximal
+block content
+    .container-fluid
+        if message
+            .text-center.alert.alert-success #{message}
+        .container-fluid.text-center.col-6
+            img.col-7(src="/images/logo.png", alt="")
+        br
+        h2 Projets
+        form(action="/nouveauProjet" method="POST")
+                .row
+                    .col    
+                        label Nom du projet
+                        input.form-control(type='text' name='nom' placeholder='Nom du projet' required)
+                    .col
+                        label Nom du projet
                         input.form-control(type='number' name='nombreEtudiants' placeholder='Nombre d\'etudiants' required)
-                    br
-                    label.form-label.container-fluid Date limite
-                        input.form-control(type='date' name='dateLimite' required)
-                    .text-center
-                            button.btn.btn-success.col-4(type='submit') Ajouter
+                    .col    
+                        label Date limite 
+                            input.form-control(type='date' name='dateLimite' required)
+                    .col
+                        .mb-4
+                        button#boutton.btn.btn-success(type="submit") Ajouter le projet 
+        br
+        form(action="/addprojet" method="POST")
+                        a(href="/index") 
+                            button.btn.btn-success(type='submit') Revenir a la liste des projets

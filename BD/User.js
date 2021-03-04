@@ -21,7 +21,12 @@ const user = new mongoose.Schema({
   motdePasse:{
     type:String
   },
-
+  materielPret:{
+    type: [String]
+  },
+  materielDate:{
+    type:Date
+  }
 });
 const Utilisateur = mongoose.model('Utilisateur',user);
 

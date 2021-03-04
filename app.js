@@ -9,7 +9,6 @@ var logger = require('morgan');
 const connectDB = require('./BD/Connexion');
 var indexRouter = require('./routes/index');
 const session			= require('express-session')
-//var autocomplete = require('autocompleter');
 
 var app = express();
 
