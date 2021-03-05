@@ -53,8 +53,7 @@ block content
                                 th(scope='col') Etudiant
                                 th(scope='col') Nom du projet
                                 th(scope='col') Réponse
-                                            
-                                            each pro,i in data.proj
+                                        each pro,i in data.proj
                                                 -if(pro.Dispo){
                                                     each y,j in pro.listeEtudiant
                                                         
@@ -68,11 +67,8 @@ block content
                                                                             input(type="hidden", name="Projet" value=pro.Nom)
                                                                         td
                                                                             button.btn.btn-success(type="submit") Accepter
-                                                                            | 
-                                                                            form(action="/supprimer", method="post") 
-                                                                                button.btn.btn-danger(type="submit") Refuser
                                                 -}
-                        -}
+                    -}
                     h2 - Projet en Cours
                     br
                     ul
