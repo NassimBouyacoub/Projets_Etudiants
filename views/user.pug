@@ -26,6 +26,10 @@ block content
                     li
                         |  Pas de Projet pour l'instant 
                 -}
+            -if(Utilisateur.Projet!="Vide"){
+                ul
+                    li=Utilisateur.Projet 
+            -}
             h2 - Materiel prété
             -if (Utilisateur.materielPret){
                 - var index=0
@@ -51,17 +55,24 @@ block content
                                 th(scope='col') Réponse
                                             
                                             each pro,i in data.proj
-                                                each y,j in pro.listeEtudiant
-                                                    tbody
-                                                            tr1  
-                                                                th(scope='row')=j+1
-                                                                td=pro.listeEtudiant[j]
-                                                                td=pro.Nom
-                                                                td
-                                                                    button.btn.btn-success Accepter
-                                                                    | 
-                                                                    button.btn.btn-danger Refuser
-                    -}
+                                                -if(pro.Dispo){
+                                                    each y,j in pro.listeEtudiant
+                                                        
+                                                            tbody
+                                                                form(action="/user", method="post") 
+                                                                    tr1  
+                                                                        th(scope='row')=j+1
+                                                                        td=pro.listeEtudiant[j]
+                                                                            input(type="hidden" name="emailEtudiant" value=pro.listeEtudiant[j])
+                                                                        td=pro.Nom
+                                                                            input(type="hidden", name="Projet" value=pro.Nom)
+                                                                        td
+                                                                            button.btn.btn-success(type="submit") Accepter
+                                                                            | 
+                                                                            form(action="/supprimer", method="post") 
+                                                                                button.btn.btn-danger(type="submit") Refuser
+                                                -}
+                        -}
                     h2 - Projet en Cours
                     br
                     ul

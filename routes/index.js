@@ -1,15 +1,14 @@
-var express = require('express')
-const app				= express()
-const passport			= require('passport')
-var router = express.Router();
-const passeport = require("../BD/passport")
-const reg = require("../BD/Inscription")
-const pro = require('../BD/projet');
-const you = require('../BD/User')
-
-const addMateriele = require('../BD/addMateriel')
-const proj = require('../BD/addProject')
-const choix =require('../BD/choix');
+var express 		= require('express')
+const app			= express()
+const passport		= require('passport')
+var router 			= express.Router();
+const passeport 	= require("../BD/passport")
+const reg 			= require("../BD/Inscription")
+const pro 			= require('../BD/projet');
+const projet 		= require("../BD/attributionProjet")
+const addMateriele 	= require('../BD/addMateriel')
+const proj 			= require('../BD/addProject')
+const choix 		= require('../BD/choix');
 
 
 
@@ -61,6 +60,17 @@ router.post('/pret',passeport.isLoggedIn, function(req, res, next) {
 	res.render('pretMateriel',{message:'Le materiel que vous avez choisi a été ajouté a votre liste de pret'})
   });
 
+//Confirmation du projet par le prof
+router.post('/user',passeport.isLoggedIn, function(req, res, next) {
+	projet.Accept(req,res)
+	res.redirect('/profil')
+});
+//refus du projet
+router.post('/supprimer',passeport.isLoggedIn, function(req, res, next) {
+	projet.Refuse(req,res)
+	res.render('pretMateriel',{message:'Le materiel que vous avez choisi a été ajouté a votre liste de pret'})
+});
+
 
 
 router.get('/profil',passeport.isLoggedIn, function(req, res, next) {
@@ -74,7 +84,6 @@ router.get('/profil',passeport.isLoggedIn, function(req, res, next) {
 		}
 	})
 });
-
 
 
 
