@@ -44,8 +44,7 @@ router.post("/register",function(req,res,next){
 
 //Ajouter un projet
 router.get('/addprojet',passeport.isLoggedIn, function(req, res, next) {
-	var Materiel=['Arduino','Raspberry','Discovery Analog']
-	res.render('testprojet',{data:{materiel:Materiel}})
+	res.render('testprojet')
   });
 router.post("/addprojet",function(req,res,next){
 	res.redirect('index')
@@ -84,7 +83,6 @@ router.get('/profil',passeport.isLoggedIn, function(req, res, next) {
 		}
 	})
 });
-
 
 
 router.get('/index',passeport.isLoggedIn, function(req, res, next) {
